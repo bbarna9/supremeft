@@ -85,7 +85,7 @@ export default function Home() {
         </div>
         <Link
           href="#banner"
-          className="lg:hidden w-fit fixed h-[60%] left-6 mt-1 z-50"
+          className="lg:hidden w-fit fixed h-full left-6 mt-1 z-50"
           id="navBarLogo"
           onClick={() => setIsOpen(false)}
         >
@@ -94,8 +94,8 @@ export default function Home() {
             width={1000}
             height={1000}
             src="/images/logo2.png"
-            className="h-full w-fit min-h-12 object-contain"
-            style={{ height: "50px !important" }}
+            className="w-fit min-h-[65%] object-contain"
+            style={{ height: "65% !important" }}
           />
         </Link>
       </div>
