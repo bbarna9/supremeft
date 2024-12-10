@@ -11,6 +11,14 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        gold: "#C78F44",
+        dark: "#070707",
+        dark1: "#141414",
+        dark2: "#212121",
+        dark3: "#444444",
+      },
+      boxShadow: {
+        customBottom: "0px 30px 60px -100px",
       },
     },
   },

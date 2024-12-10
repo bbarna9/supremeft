@@ -1,101 +1,140 @@
+"use client";
+
 import Image from "next/image";
+import Banner from "./components/Banner";
+import Footer from "./components/Footer";
+import About from "./components/About";
+import Prices from "./components/Prices";
+import { useState } from "react";
+import Link from "next/link";
+import Contact from "./components/Contact";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", (event) => {
+      if (window.scrollY !== 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    });
+  }
+
+  const navItemStyle =
+    "hover:text-gold transition-all duration-500 cursor-pointer";
+
+  return (
+    <div className="h-fit w-screen" id="page">
+      <nav
+        className={`h-20 max-md:hidden z-50 w-screen flex items-center justify-center fixed top-0 left-0 ${
+          // isScrolled ? "bg-white text-black" : "bg-black text-white"
+          "bg-black text-white"
+        } transition-all duration-500 bg-opacity-80 backdrop-blur-sm`}
+        style={{ fontFamily: "'Poppins', sans-serif" }}
+        id="TopBar"
+      >
+        <Link href="#banner" className="absolute left-32" id="navBarLogo">
+          <Image
+            alt="logo"
+            width={1000}
+            height={1000}
+            src="/images/logo2.png"
+            className="h-12 w-fit object-contain"
+          />
+        </Link>
+        <ul className="w-[60%] h-full flex gap-28 items-center justify-center font-semibold">
+          <li className={navItemStyle}>
+            <Link href="#about">Bemutatkozás</Link>
+          </li>
+          <li className={navItemStyle}>
+            <Link href="#prices">Edzések és díjak</Link>
+          </li>
+          <li className={navItemStyle}>
+            <Link href="#contact">Kapcsolat</Link>
+          </li>
+          {/* <li className={navItemStyle}>FB IN EM</li> */}
+        </ul>
+      </nav>
+
+      <div
+        className="lg:hidden fixed z-50 top-0 left-0 w-screen h-20 flex items-center bg-dark bg-opacity-90 backdrop-blur-lg"
+        id="TopBar"
+      >
+        <div
+          className=" absolute flex flex-col gap-2 right-6 z-50"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <div
+            className={`h-1 rounded-full bg-white transition-all duration-500 ${
+              isOpen ? "w-12 -rotate-45 mt-4" : "w-10 -rotate-0 mt-0"
+            }`}
+          />
+          <div
+            className={`h-1 w-10 rounded-full transition-all duration-500 ${
+              isOpen ? "bg-transparent" : "bg-white"
+            }`}
+          />
+          <div
+            className={`h-1 rounded-full bg-white transition-all duration-500 ${
+              isOpen ? "w-12 rotate-45 -mt-6" : "w-10 rotate-0 -mt-0"
+            }`}
+          />
+        </div>
+        <Link
+          href="#banner"
+          className="lg:hidden fixed left-6 mt-1 z-50"
+          id="navBarLogo"
+          onClick={() => setIsOpen(false)}
+        >
+          <Image
+            alt="logo"
+            width={1000}
+            height={1000}
+            src="/images/logo2.png"
+            className="h-12 w-fit object-contain"
+          />
+        </Link>
+      </div>
+
+      <nav
+        className={`lg:hidden h-screen z-40 w-screen flex items-center justify-center fixed top-0 ${
+          isOpen ? "left-0" : "left-[100vw]"
+        } transition-all duration-500 bg-opacity-80 bg-dark backdrop-blur-sm`}
+        style={{ fontFamily: "'Poppins', sans-serif" }}
+      >
+        <ul className="w-[80%] h-full mx-auto flex flex-col gap-12 justify-center font-semibold text-3xl">
+          <li className={navItemStyle} onClick={() => setIsOpen(false)}>
+            <Link href="#about">Bemutatkozás</Link>
+          </li>
+          <li className={navItemStyle} onClick={() => setIsOpen(false)}>
+            <Link href="#prices">Edzések és díjak</Link>
+          </li>
+          <li className={navItemStyle} onClick={() => setIsOpen(false)}>
+            <Link href="#contact">Kapcsolat</Link>
+          </li>
+          {/* <li className={navItemStyle}>FB IN EM</li> */}
+        </ul>
+      </nav>
+
+      {/* snap-y snap-mandatory */}
+      <main className="h-screen scroll-smooth">
+        <div className="snap-always snap-center" id="banner">
+          <Banner />
+        </div>
+        <div className="snap-always snap-start" id="about">
+          <About />
+        </div>
+        <div className="snap-always snap-center" id="prices">
+          <Prices />
+        </div>
+        <div className="snap-always snap-center" id="contact">
+          <Contact />
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      {/* <Footer /> */}
     </div>
   );
 }
