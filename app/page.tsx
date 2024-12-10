@@ -27,7 +27,7 @@ export default function Home() {
     "hover:text-gold transition-all duration-500 cursor-pointer";
 
   return (
-    <div className="h-fit w-screen" id="page">
+    <div className="h-fit w-screen text-white" id="page">
       <nav
         className={`h-20 max-md:hidden z-50 w-screen flex items-center justify-center fixed top-0 left-0 ${
           // isScrolled ? "bg-white text-black" : "bg-black text-white"
@@ -94,7 +94,7 @@ export default function Home() {
             width={1000}
             height={1000}
             src="/images/logo2.png"
-            className="h-[4rem] w-fit object-contain"
+            className="h-16 w-fit object-contain"
           />
         </Link>
       </div>
