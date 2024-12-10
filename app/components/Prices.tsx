@@ -3,7 +3,7 @@ import React from "react";
 const Prices = () => {
   return (
     <div
-      className="w-screen h-screen max-md:h-fit max-md:pt-32 flex flex-col items-center justify-center"
+      className="w-screen bg-bg h-screen max-md:h-fit max-md:pt-32 flex flex-col items-center justify-center"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
       <h2 className="text-4xl font-semibold text-gold mb-20">
