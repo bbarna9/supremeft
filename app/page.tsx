@@ -94,7 +94,7 @@ export default function Home() {
             width={1000}
             height={1000}
             src="/images/logo2.png"
-            className="h-12 w-fit object-contain"
+            className="h-[4rem] w-fit object-contain"
           />
         </Link>
       </div>
@@ -120,7 +120,7 @@ export default function Home() {
       </nav>
 
       {/* snap-y snap-mandatory */}
-      <main className="h-screen scroll-smooth">
+      <main className="h-screen scroll-smooth bg-bg">
         <div className="snap-always snap-center" id="banner">
           <Banner />
         </div>

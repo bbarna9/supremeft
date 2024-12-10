@@ -16,6 +16,7 @@ export default {
         dark1: "#141414",
         dark2: "#212121",
         dark3: "#444444",
+        bg: "#0A0A0A",
       },
       boxShadow: {
         customBottom: "0px 30px 60px -100px",
