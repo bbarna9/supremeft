@@ -13,7 +13,7 @@ const Contact = () => {
           Bármilyen kérdés esetén, amire nem találtál választ az oldalon
           nyugodtan fordulj hozzánk a következő elérhetőségeink bármelyikén:
         </p>
-        <ul className="p-0 max-md:mx-auto max-md:w-[80vw]">
+        <ul className="p-0 max-md:mx-auto max-md:w-[90vw]">
           <li className="flex items-center mb-2">
             <div className="w-4 flex items-center justify-center mr-4">
               <i className="fa-regular fa-envelope"></i>
