@@ -94,7 +94,7 @@ export default function Home() {
             width={1000}
             height={1000}
             src="/images/logo2.png"
-            className="w-fit min-h-full h full object-contain"
+            className="w-fit min-h-full h-full object-contain"
             style={{ height: "100% !important" }}
           />
         </Link>
